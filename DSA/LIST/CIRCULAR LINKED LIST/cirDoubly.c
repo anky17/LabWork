@@ -1,96 +1,94 @@
-// WAP TO IMPLEMENT ALL THE OPERATION OF SINGLY CIRCULAR LINKED LIST.
-
+// WAP TO IMPLEMENT ALL THE OPERATION OF DOUBLY CIRCULAR LINKED LIST.
 #include <stdio.h>
 #include <stdlib.h>
 
 struct node {
   int data;
   struct node *next;
+  struct node *prev;
 };
 
-// Function to display all the elements of the circular singly linked list
+// Function to display all the elements of the circular doubly linked list
 void traverse(struct node *last) {
   struct node *p = last->next;
-  printf("Element: ");
+  printf("Elements: <->");
   do {
-    printf("%d->", p->data);
+    printf("%d<->", p->data);
     p = p->next;
-  } while (p != last->next);
+  } while (p != last->next);  // Loop until we come back to the start
 }
 
-// Function to insert a node at the front of a circular singly linked list
+// Function to insert a node at the front of a circular doubly linked list
 struct node *insertAtFront(struct node *last, int data) {
   struct node *newNode = (struct node *)malloc(sizeof(struct node));
   newNode->data = data;
   newNode->next = last->next;
+  newNode->prev = last;
+  last->next->prev = newNode;  // the old first node points back to the newNode
   last->next = newNode;
   return last;
 }
 
-// Function to insert a node at given index of a circular singly linked list
+// Function to insert a node at given index of a circular doubly linked list
 struct node *insertAtIndex(struct node *last, int data, int index) {
   struct node *newNode = (struct node *)malloc(sizeof(struct node));
+  newNode->data = data;
   struct node *p = last->next;  // Start from the first node
-  for (int i = 0; i < index - 1 && p != last;
-       i++) {  // Traverse to the specified index
+  for (int i = 0; i < index - 1 && p != last; i++) {
     p = p->next;
   }
-  // Insert the new node after the current node
   newNode->next = p->next;
-  newNode->data = data;
+  newNode->prev = p;
+  p->next->prev = newNode;
   p->next = newNode;
   return last;
 }
 
-// Function to insert a node at the end of a circular singly linked list
+// Function to insert a node at the end of a circular doubly linked list
 struct node *insertAtEnd(struct node *last, int data) {
   struct node *newNode = (struct node *)malloc(sizeof(struct node));
   newNode->data = data;
   newNode->next = last->next;
+  newNode->prev = last;
+  last->next->prev = newNode;
   last->next = newNode;
-
-  // update the last to the newNode
-  last = newNode;
+  last = newNode;  // updating the last pointer
   return last;
 }
 
-// Function to delete a node from the front of a circular singly linked list
+// Function to delete a node from the front of a circular doubly linked list
 struct node *deletefromFront(struct node *last) {
   struct node *first = last->next;
-  struct node *firstNode = first;
   last->next = first->next;
-  free(firstNode);
+  first->next->prev = last;
+  free(first);
   return last;
 }
 
-// Function to delete a node from the front of a circular singly linked list
+// Function to delete a node at given index of a circular doubly linked list
 struct node *deleteAtIndex(struct node *last, int index) {
   struct node *p = last->next;
-  struct node *q = p->next;
-  int i = 0;
-  while (i != index - 1) {
+  for (int i = 0; i < index && p != last; i++) {
     p = p->next;
-    q = q->next;
-    i++;
   }
-  p->next = q->next;
-  free(q);
+  p->prev->next = p->next;
+  p->next->prev = p->prev;
+  free(p);
   return last;
 }
 
-// Function to delete a node from the end of a circular singly linked list
+// Function to delete a node from the end of a circular doubly linked list
 struct node *deletefromEnd(struct node *last) {
-  struct node *q = last->next;
-  while (q->next != last) {
-    q = q->next;
-  }
-  q->next = last->next;  // Here q->next points to first node
-  free(last);
+  struct node *lastNode = last;
+  last->prev->next = last->next;
+  last->next->prev = last->prev;
+  last = last->prev;
+  free(lastNode);
   return last;
 }
 
 int main() {
-  struct node *last;
+  struct node *last = NULL;
   struct node *first = NULL;
   struct node *second = NULL;
   struct node *third = NULL;
@@ -103,26 +101,29 @@ int main() {
   second->data = 8;
   third->data = 9;
 
+  first->prev = third;
   first->next = second;
+
+  second->prev = first;
   second->next = third;
+
+  third->prev = second;
   third->next = first;
 
   last = third;
 
-  printf("\nBefore insertion\n");
-  traverse(last);
-
   last = insertAtFront(last, 90);
-  last = insertAtIndex(last, 6, 3);
+  last = insertAtIndex(last, 6, 1);  // Inserting at index 1
   last = insertAtEnd(last, 100);
 
-  printf("\nAfter insertion: \n");
+  printf("After insertion: \n");
   traverse(last);
 
-  printf("\nAfter deletion:\n");
   last = deletefromFront(last);
-  last = deleteAtIndex(last, 1);
+  last = deleteAtIndex(last, 1);  // Deleting at index 1
   last = deletefromEnd(last);
+
+  printf("After deletion:\n");
   traverse(last);
 
   return 0;
