@@ -116,14 +116,14 @@ int main() {
   last = insertAtIndex(last, 6, 1);  // Inserting at index 1
   last = insertAtEnd(last, 100);
 
-  printf("After insertion: \n");
+  printf("\nAfter insertion: \n");
   traverse(last);
 
   last = deletefromFront(last);
   last = deleteAtIndex(last, 1);  // Deleting at index 1
   last = deletefromEnd(last);
 
-  printf("After deletion:\n");
+  printf("\nAfter deletion:\n");
   traverse(last);
 
   return 0;

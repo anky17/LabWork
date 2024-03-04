@@ -56,9 +56,8 @@ struct node *insertAtEnd(struct node *last, int data) {
 
 // Function to delete a node from the front of a circular singly linked list
 struct node *deletefromFront(struct node *last) {
-  struct node *first = last->next;
-  struct node *firstNode = first;
-  last->next = first->next;
+  struct node *firstNode = last->next;
+  last->next = firstNode->next;
   free(firstNode);
   return last;
 }
@@ -86,7 +85,7 @@ struct node *deletefromEnd(struct node *last) {
   }
   q->next = last->next;  // Here q->next points to first node
   free(last);
-  return last;
+  return q;
 }
 
 int main() {
@@ -119,6 +118,8 @@ int main() {
   printf("\nAfter insertion: \n");
   traverse(last);
 
+  printf("\nBefore deletion:\n");
+  traverse(last);
   printf("\nAfter deletion:\n");
   last = deletefromFront(last);
   last = deleteAtIndex(last, 1);

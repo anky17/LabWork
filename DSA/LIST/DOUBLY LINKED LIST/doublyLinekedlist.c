@@ -41,6 +41,7 @@ void insertAtIndex(struct Node* head, int data, int index) {
     i++;
   }
   newNode->next = p->next;
+  p->next->prev = newNode;
   p->next = newNode;
   newNode->prev = p;
 }

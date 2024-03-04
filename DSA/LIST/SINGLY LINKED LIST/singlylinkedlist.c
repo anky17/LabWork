@@ -29,12 +29,12 @@ struct node *insertAtFront(struct node *head, int data) {
 struct node *insertAtIndex(struct node *head, int data, int index) {
   struct node *ptr = (struct node *)malloc(sizeof(struct node));
   struct node *p = head;
-  ptr->data = data;
   int i = 0;
   while (i != index - 1) {
     p = p->next;
     i++;
   }
+  ptr->data = data;
   ptr->next = p->next;
   p->next = ptr;
   return head;
