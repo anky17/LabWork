@@ -10,7 +10,9 @@ In the CA folder, you will find materials and code snippets implemented using VH
 - Basic Gates
 - Decoder
 - Encoder
+- MUX and DEMUX
 - Parallel Adder
+- Parity generator and checker
 - Parallel Subtractor
 - Subtractor Logic
 - Universal Gates
