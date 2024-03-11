@@ -108,8 +108,8 @@ int main() {
 
   last = third;
 
-  printf("\nBefore insertion\n");
-  traverse(last);
+  // printf("\nBefore insertion\n");
+  // traverse(last);
 
   last = insertAtFront(last, 90);
   last = insertAtIndex(last, 6, 3);
@@ -118,8 +118,8 @@ int main() {
   printf("\nAfter insertion: \n");
   traverse(last);
 
-  printf("\nBefore deletion:\n");
-  traverse(last);
+  // printf("\nBefore deletion:\n");
+  // traverse(last);
   printf("\nAfter deletion:\n");
   last = deletefromFront(last);
   last = deleteAtIndex(last, 1);

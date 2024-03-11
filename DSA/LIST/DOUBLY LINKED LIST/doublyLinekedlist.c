@@ -8,11 +8,11 @@ struct Node {
 };
 
 void listTraversal(struct Node* head) {
-  struct Node* ptr;
-  printf("Linked list: NULL<-");
+  // struct Node* ptr;
+  // ptr = head;
+  printf("Linked list: NULL<->");
   while (head != NULL) {
     printf("%d<->", head->data);
-    ptr = head;
     head = head->next;
   }
   if (head == NULL) printf("NULL\n");
@@ -25,7 +25,7 @@ struct Node* insertAtFront(struct Node* head, int data) {
   newNode->prev = NULL;
   newNode->next = head;
   // previous of head is newNode
-  if (head != NULL) head->prev = newNode;
+  head->prev = newNode;
   head = newNode;
   return head;
 }
@@ -72,7 +72,8 @@ struct Node* deletefromFront(struct Node* head) {
 void deleteAtIndex(struct Node* head, int index) {
   struct Node* p = head;
   struct Node* q = head->next;
-  for (int i = 0; i < index - 1; i++) {
+  int i = 0;
+  for (i = 0; i < index - 1; i++) {
     p = p->next;
     q = q->next;
   }
@@ -96,11 +97,30 @@ void deleteFromEnd(struct Node* head) {
 int main() {
   // initialize an empty node
   struct Node* head = NULL;
+  struct Node* first = NULL;
+  struct Node* second = NULL;
+  struct Node* third = NULL;
 
+  first = (struct Node*)malloc(sizeof(struct Node));
+  second = (struct Node*)malloc(sizeof(struct Node));
+  third = (struct Node*)malloc(sizeof(struct Node));
+
+  first->data = 7;
+  second->data = 8;
+  third->data = 9;
+
+  first->prev = NULL;
+  first->next = second;
+
+  second->prev = first;
+  second->next = third;
+
+  third->prev = second;
+  third->next = NULL;
+
+  head = first;
   head = insertAtFront(head, 6);
   insertAtIndex(head, 11, 1);
-  insertAtIndex(head, 14, 2);
-  insertAtIndex(head, 12, 3);
   insertAtEnd(head, 9);
 
   printf("\nAfter insertion:\n");
