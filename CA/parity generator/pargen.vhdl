@@ -13,4 +13,4 @@ architecture behave of pargen is
 begin
 ep <= S(2) xor (S(1) xor S(0));
 op <= not(S(2) xor (S(1) xor S(0)));
-end behave;
+end behave;	

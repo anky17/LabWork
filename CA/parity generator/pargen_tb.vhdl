@@ -35,6 +35,7 @@ process begin
 	S <= "110";
 	wait for 1 ns;
 	S <= "111";
+	wait for 1 ns;
 	assert false report "Reached end of test";
 wait;
 end process;
