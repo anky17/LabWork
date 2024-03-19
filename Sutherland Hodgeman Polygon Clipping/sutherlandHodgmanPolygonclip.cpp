@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 // Define the maximum number of vertices in the polygon
-#define MAX_VERTICES 8
+#define VERTICES 8
 
 // Define the clipping window coordinates
 #define XMIN 40
@@ -22,7 +22,7 @@ struct Vertex {
 };
 
 // Array to store the vertices of the polygon
-struct Vertex vertices[MAX_VERTICES] = {
+struct Vertex vertices[VERTICES] = {
     {20, 20},    // Vertex 1
     {100, 20},   // Vertex 2
     {180, 60},   // Vertex 3
@@ -35,7 +35,7 @@ struct Vertex vertices[MAX_VERTICES] = {
 
 // Temporary array used to store the new coordinates of the vertices after
 // clipping
-struct Vertex new_vertices[MAX_VERTICES] = {{0}};
+struct Vertex new_vertices[VERTICES] = {{0}};
 
 // Function prototypes
 int leftClip(int, int);
@@ -49,7 +49,7 @@ int main() {
   int result, i;
 
   // Perform left, top, right, and bottom clipping successively
-  result = leftClip(MAX_VERTICES, XMIN);
+  result = leftClip(VERTICES, XMIN);
   result = topClip(result, YMIN);
   result = rightClip(result, XMAX);
   result = bottomClip(result, YMAX);
@@ -58,9 +58,10 @@ int main() {
   rectangle(XMIN, YMIN, XMAX, YMAX);
 
   // Draw the clipped polygon
-  for (i = 0; i < result; i++)
+  for (i = 0; i < result; i++) {
     line(vertices[i].x, vertices[i].y, vertices[(i + 1) % result].x,
          vertices[(i + 1) % result].y);
+  }
 
   getch();
   closegraph();
