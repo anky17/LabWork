@@ -1,12 +1,13 @@
 # LAB WORK
 
-This repository is organized into two main folders: CA (Computer Architecture) and DSA (Data Structure and Algorithms). Each folder contains subfolders and files corresponding to various concepts and implementations within the respective fields.
+This repository is organized into four main folders: CA (Computer Architecture), DSA (Data Structure and Algorithms) and Sutherland Line and Polygon Clipping of Computer Graphics. Each folder contains subfolders and files corresponding to various concepts and implementations within the respective fields.
 
 ## CA - Computer Architecture
 
 In the CA folder, you will find materials and code snippets implemented using VHDL. This includes:
 
 - Adder Logic
+- Arithmetic and Logic Unit
 - Basic Gates
 - Decoder
 - Encoder
@@ -29,6 +30,13 @@ In the DSA folder, the focus shifts to programming concepts, specifically relate
 - Searching
 - Sorting
 - Stack
+
+## CLIPPING ALGORIHTM
+
+This includes the clipping of line and polygon using various clipping algorithm.
+
+- Line Clipping
+- Polygon Clipping
 
 ## Contribution
 
