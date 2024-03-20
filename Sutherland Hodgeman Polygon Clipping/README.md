@@ -15,3 +15,7 @@
      - Clip the edge against each boundary of the clipping window.
      - Retain the clipped portion of the edge.
 3. **Display the clipped polygon using the retained edges.**
+
+### Output
+![Output Photo](Sutherland Hodgeman Polygon Clipping/output.png)
+
