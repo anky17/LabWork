@@ -7,11 +7,11 @@
 **Steps:**
 1. **Initialize a temporary array TempArray to store the clipped vertices.**
 2. **For each edge in the polygon:**
-   -- a. **Check if the edge is entirely outside the clipping window:**
-        - If yes, discard the edge.
-   -- b. **Check if the edge is entirely inside the clipping window:**
-        - If yes, retain the edge.
-   -- c. **If the edge intersects with the clipping window:**
-        - Clip the edge against each boundary of the clipping window.
-        - Retain the clipped portion of the edge.
+   - a. **Check if the edge is entirely outside the clipping window:**
+     - If yes, discard the edge.
+   - b. **Check if the edge is entirely inside the clipping window:**
+     - If yes, retain the edge.
+   - c  **If the edge intersects with the clipping window:**
+     - Clip the edge against each boundary of the clipping window.
+     - Retain the clipped portion of the edge.
 3. **Display the clipped polygon using the retained edges.**
