@@ -17,5 +17,5 @@
 3. **Display the clipped polygon using the retained edges.**
 
 ### Output
-![Output Photo](Sutherland Hodgeman Polygon Clipping/output.png)
+![Output Photo](https://github.com/anky17/LabWork/blob/main/Sutherland%20Hodgeman%20Polygon%20Clipping/output.png)
 
